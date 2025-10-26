@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+"""
+Basic AI Mobilization Example
+"""
+import asyncio
+from src.mobilizer.orchestrator import AIMobilizationOrchestrator
+
+async def main():
+    # Initialize AI Mobilization system
+    mobilizer = AIMobilizationOrchestrator()
+    
+    # Mobilize an AI model
+    result = await mobilizer.mobilize_ai_model(
+        model_path="models/vision_transformer.v5",
+        deployment_target="hybrid", 
+        scaling_config={"min_instances": 2, "max_instances": 10}
+    )
+    
+    print("🎯 Mobilization Result:", result)
+    print("📊 Current Status:", mobilizer.get_mobilization_status())
+
+if __name__ == "__main__":
+    asyncio.run(main())
